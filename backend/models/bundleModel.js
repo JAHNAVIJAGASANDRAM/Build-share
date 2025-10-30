@@ -4,10 +4,17 @@ const bundleSchema = new mongoose.Schema({
   name: String,
   description: String,
   itemsRequired: [
-    { item: String, quantity: Number },
+    {
+      item: String,
+      quantity: Number,
+    },
   ],
   itemsReceived: [
-    { item: String, quantity: Number, donorId: String },
+    {
+      item: String,
+      quantity: Number,
+      donorId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    },
   ],
   status: { type: String, default: "incomplete" },
 });
